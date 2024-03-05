@@ -3,9 +3,16 @@ import "./Style.css";
 
 const Movielist = ({ filteredMovies }) => {
   return (
-    <div className="movie-list">
+    <div
+      className="movie-list"
+      style={{
+        display: "flex",
+        justifyContent: "space-evenly",
+        flexWrap: " wrap",
+      }}
+    >
       {filteredMovies.map((movie, index) => {
-        return <MovieCard movie={movie} index={index} />;
+        return <MovieCard movie={movie} key={index} />;
       })}
     </div>
   );
