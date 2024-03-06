@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import ReactStars from "react-rating-stars-component";
 import AddMovie from "../AddMovie/AddMovie";
+import { NavLink } from "react-bootstrap";
 
 const NavBar = ({
   rating,
@@ -33,12 +34,11 @@ const NavBar = ({
         <Container>
           <Navbar.Brand href="#home">Movie App</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <NavLink href="\">Home</NavLink>
+            <NavLink href="/movie-details">MovieDetails</NavLink>
             <Button variant="light" onClick={handleShow}>
               Add New Movie
-            </Button>{" "}
+            </Button>
           </Nav>
 
           <ReactStars

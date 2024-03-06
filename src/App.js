@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./Components/NavBar/NavBar";
 import Filtrer from "./Components/Filtrer/Filtrer";
 import { Route, Routes } from "react-router-dom";
+import MovieDetails from "./Components/MovieDetails/MovieDetails";
 
 function App() {
   const [rating, setRating] = useState(1);
@@ -12,13 +13,14 @@ function App() {
   const [newMovie, setNewMovie] = useState({});
   const [movieData, setMovieData] = useState([
     {
-      id: Math.random(),
+      id: 1,
       title: "Conjuring 3",
       posterUrl:
         "https://www.mediacritik.com/wp-content/uploads/2020/07/the-con-696x431.jpg",
       rating: 5,
       description:
         "A chilling story of terror, murder and unknown evil that shocked even experienced real-life paranormal investigators Ed and Lorraine Warren.",
+      trailer: "https://www.youtube.com/embed/h9Q4zZS2v1k?si=CCWAK_dtB9-iiGIP",
     },
 
     {
@@ -160,6 +162,7 @@ function App() {
     setMovieData([...movieData, newMovie]);
     handleClose();
   };
+
   return (
     <>
       <NavBar
@@ -177,25 +180,17 @@ function App() {
         <Route
           path="/"
           element={
-            <>
-              <Filtrer
-                rating={rating}
-                searchInput={searchInput}
-                movieData={movieData}
-              />
-              {/* <NavBar
-                rating={rating}
-                setRating={setRating}
-                setSearchInput={setSearchInput}
-                newMovie={newMovie}
-                setNewMovie={setNewMovie}
-                handleSave={handleSave}
-                show={show}
-                handleShow={handleShow}
-                handleClose={handleClose}
-              /> */}
-            </>
+            <Filtrer
+              rating={rating}
+              searchInput={searchInput}
+              movieData={movieData}
+            />
           }
+        />
+
+        <Route
+          path="/movie-details/:movieId"
+          element={<MovieDetails movieData={movieData} />}
         />
       </Routes>
     </>

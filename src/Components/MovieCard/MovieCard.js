@@ -3,6 +3,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import ReactStars from "react-rating-stars-component";
 import "./Style.css";
+import { Link } from "react-router-dom";
 const MovieCard = ({ movie, index }) => {
   return (
     <div key={index}>
@@ -21,7 +22,9 @@ const MovieCard = ({ movie, index }) => {
           src={movie.posterUrl}
         />
         <Card.Body>
-          <Card.Title>{movie.title}</Card.Title>
+          <Card.Title>
+            <Link to={`/movie-details/${movie.id}`}>{movie.title}</Link>
+          </Card.Title>
           <Card.Text>{movie.description}</Card.Text>
           <ReactStars
             count={5}
@@ -30,7 +33,6 @@ const MovieCard = ({ movie, index }) => {
             value={movie.rating}
             activeColor="#ffd700"
           />
-          ,
         </Card.Body>
       </Card>
     </div>
